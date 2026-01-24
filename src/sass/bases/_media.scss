@@ -1,0 +1,325 @@
+// Breakpoint variables
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1440px;
+$breakpoint-ultrawide: 2560px;
+
+// Breakpoint mixin
+@mixin respond($size) {
+  @if $size == 'mobile' {
+    @media (max-width: $breakpoint-mobile) { 
+      @content; 
+    }
+  }
+  @else if $size == 'tablet' {
+    @media (min-width: #{ $breakpoint-mobile + 1 }) and (max-width: $breakpoint-tablet) { 
+      @content; 
+    }
+  }
+  @else if $size == 'desktop' {
+    @media (min-width: #{ $breakpoint-tablet + 1 }) and (max-width: $breakpoint-desktop) { 
+      @content; 
+    }
+  }
+  @else if $size == 'wide' {
+    @media (min-width: #{$breakpoint-desktop + 1}) and (max-width: #{$breakpoint-wide + 480}) { 
+      @content; 
+    }
+  }
+  @else if $size == 'ultrawide' {
+ @media (min-width: #{$breakpoint-wide + 480}) and (max-width: $breakpoint-ultrawide) { 
+      @content; 
+    }
+  }
+  // Useful "up" variants for mobile-first approach
+  @else if $size == 'tablet-up' {
+    @media (min-width: #{ $breakpoint-tablet + 1} ) { 
+      @content; 
+    }
+  }
+  @else if $size == 'desktop-up' {
+    @media (min-width: #{ $breakpoint-desktop + 1 } ) { 
+      @content; 
+    }
+  }
+}
+
+// Device-specific utilities
+@mixin touch-device {
+  @media (hover: none) and (pointer: coarse) { @content; }
+}
+
+@mixin hover-device {
+  @media (hover: hover) and (pointer: fine) { @content; }
+}
+
+// Print styles
+@mixin print {
+  @media print { @content; }
+}
+
+// Orientation
+@mixin landscape {
+  @media (orientation: landscape) { @content; }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) { @content; }
+}
+
+
+// ============================================
+// OPTION 3: Layout-Specific Media Queries
+// ============================================
+
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+
+// Example: layouts/_container.scss
+// .container {
+//   width: 100%;
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 20px;
+  
+//   @include respond-to('tablet') {
+//     padding: 0 15px;
+//   }
+  
+//   @include respond-to('mobile') {
+//     padding: 0 10px;
+//   }
+// }
+
+// ============================================
+// RECOMMENDED STRUCTURE FOR YOUR PROJECT:
+// ============================================
+
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+
+// ============================================
+// WHAT GOES IN bases/_media.scss:
+// ============================================
+
+// ✅ DO put in bases/_media.scss:
+// - Breakpoint variables
+// - Media query mixins
+// - Device detection mixins
+// - Universal utilities like .hide-mobile, .show-desktop
+
+// ❌ DON'T put in bases/_media.scss:
+// - Component-specific responsive styles
+// - Layout-specific responsive styles
+// - Theme-specific responsive styles
+
+// ============================================
+// EXAMPLE: Complete bases/_media.scss
+// ============================================
+
+// Breakpoint Variables
+// $mobile: 480px;
+// $tablet: 768px;
+// $desktop: 1024px;
+// $wide: 1440px;
+
+// // Responsive Mixin
+// @mixin respond($size) {
+//   @if $size == 'mobile' {
+//     @media (max-width: #{$mobile}) { @content; }
+//   }
+//   @else if $size == 'tablet' {
+//     @media (min-width: #{$mobile + 1}) and (max-width: #{$tablet}) { @content; }
+//   }
+//   @else if $size == 'desktop' {
+//     @media (min-width: #{$tablet + 1}) and (max-width: #{$desktop}) { @content; }
+//   }
+//   @else if $size == 'wide' {
+//     @media (min-width: #{$desktop + 1}) { @content; }
+//   }
+//   @else if $size == 'tablet-up' {
+//     @media (min-width: #{$tablet + 1}) { @content; }
+//   }
+//   @else if $size == 'desktop-up' {
+//     @media (min-width: #{$desktop + 1}) { @content; }
+//   }
+// }
+
+// Device Detection
+@mixin touch-device {
+  @media (hover: none) and (pointer: coarse) { @content; }
+}
+
+@mixin mouse-device {
+  @media (hover: hover) and (pointer: fine) { @content; }
+}
+
+// // Orientation
+// @mixin landscape {
+//   @media (orientation: landscape) { @content; }
+// }
+
+// @mixin portrait {
+//   @media (orientation: portrait) { @content; }
+// }
+
+// // Print
+// @mixin print {
+//   @media print { @content; }
+// }
+
+// Utility Classes (optional - these are universal)
+.hide-mobile {
+  @include respond('mobile') {
+    display: none !important;
+  }
+}
+
+.hide-tablet {
+  @include respond('tablet') {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @include respond('desktop-up') {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+  
+  @include respond('mobile') {
+    display: block !important;
+  }
+}
+
+// ============================================
+// HOW TO USE IT IN YOUR PROJECT:
+// ============================================
+
+// In any component file:
+// @use '../bases/media' as *;
+
+// .my-component {
+//   padding: 40px;
+  
+//   @include respond('tablet') {
+//     padding: 30px;
+//   }
+  
+//   @include respond('mobile') {
+//     padding: 20px;
+//   }
+  
+  // For touch devices
+  @include touch-device {
+    .hover-effect {
+      display: none; // No hover on touch
+    }
+  }
+
+
+// ============================================
+// COMBINING THEMES + RESPONSIVE:
+// ============================================
+
+// You can combine theme styles with responsive styles!
+
+// body.light {
+//   .hero {
+//     font-size: 3rem;
+    
+//     @include respond('tablet') {
+//       font-size: 2rem;
+//     }
+    
+//     @include respond('mobile') {
+//       font-size: 1.5rem;
+//     }
+//   }
+// }
+
+// body.dark {
+//   .hero {
+//     font-size: 3rem;
+//     text-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
+    
+//     @include respond('tablet') {
+//       font-size: 2rem;
+//       text-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
+//     }
+    
+//     @include respond('mobile') {
+//       font-size: 1.5rem;
+//       text-shadow: 0 0 10px rgba(255, 140, 0, 0.4);
+//     }
+//   }
+// }
+
+// ============================================
+// MOBILE-FIRST vs DESKTOP-FIRST:
+// ============================================
+
+// // Mobile-first approach (recommended):
+// .element {
+//   // Mobile styles (base)
+//   font-size: 1rem;
+  
+//   // Tablet and up
+//   @media (min-width: 768px) {
+//     font-size: 1.2rem;
+//   }
+  
+//   // Desktop and up
+//   @media (min-width: 1024px) {
+//     font-size: 1.5rem;
+//   }
+// }
+
+// // Desktop-first approach:
+// .element {
+//   // Desktop styles (base)
+//   font-size: 1.5rem;
+  
+//   // Tablet and down
+//   @media (max-width: 1023px) {
+//     font-size: 1.2rem;
+//   }
+  
+//   // Mobile
+//   @media (max-width: 767px) {
+//     font-size: 1rem;
+//   }
+// }
+
+// ============================================
+// SUMMARY:
+// ============================================
+

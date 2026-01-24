@@ -1,0 +1,5 @@
+@use '../bases/mixins' as m;
+
+.basicPageLayout {
+    @include m.basicPageLayout;
+}

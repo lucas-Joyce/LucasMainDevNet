@@ -1,0 +1,202 @@
+@use '../bases/colours' as *;
+
+/**
+ * CSS Custom Properties Bridge
+ * Converts SCSS variables to CSS custom properties for JavaScript access
+ * Single source of truth: _colours.scss
+ */
+
+:root {
+  // Dark colors
+  --dark-0: #{$dark-0};
+  --dark-1: #{$dark-1};
+  --dark-2: #{$dark-2};
+  --dark-3: #{$dark-3};
+  --dark-4: #{$dark-4};
+  --dark-5: #{$dark-5};
+  --dark-6: #{$dark-6};
+  --dark-7: #{$dark-7};
+  --dark-8: #{$dark-8};
+  --dark-9: #{$dark-9};
+
+  // Gray colors
+  --gray-0: #{$gray-0};
+  --gray-1: #{$gray-1};
+  --gray-2: #{$gray-2};
+  --gray-3: #{$gray-3};
+  --gray-4: #{$gray-4};
+  --gray-5: #{$gray-5};
+  --gray-6: #{$gray-6};
+  --gray-7: #{$gray-7};
+  --gray-8: #{$gray-8};
+  --gray-9: #{$gray-9};
+
+  // Red colors
+  --red-0: #{$red-0};
+  --red-1: #{$red-1};
+  --red-2: #{$red-2};
+  --red-3: #{$red-3};
+  --red-4: #{$red-4};
+  --red-5: #{$red-5};
+  --red-6: #{$red-6};
+  --red-7: #{$red-7};
+  --red-8: #{$red-8};
+  --red-9: #{$red-9};
+
+  // Red dark colors
+  --reddark-0: #{$reddark-0};
+  --reddark-1: #{$reddark-1};
+  --reddark-2: #{$reddark-2};
+  --reddark-3: #{$reddark-3};
+  --reddark-4: #{$reddark-4};
+  --reddark-5: #{$reddark-5};
+  --reddark-6: #{$reddark-6};
+  --reddark-7: #{$reddark-7};
+  --reddark-8: #{$reddark-8};
+  --reddark-9: #{$reddark-9};
+
+  // Pink colors
+  --pink-0: #{$pink-0};
+  --pink-1: #{$pink-1};
+  --pink-2: #{$pink-2};
+  --pink-3: #{$pink-3};
+  --pink-4: #{$pink-4};
+  --pink-5: #{$pink-5};
+  --pink-6: #{$pink-6};
+  --pink-7: #{$pink-7};
+  --pink-8: #{$pink-8};
+  --pink-9: #{$pink-9};
+
+  // Special pink
+  --specialPink-0: #{$specialPink-0};
+
+  // Grape colors
+  --grape-0: #{$grape-0};
+  --grape-1: #{$grape-1};
+  --grape-2: #{$grape-2};
+  --grape-3: #{$grape-3};
+  --grape-4: #{$grape-4};
+  --grape-5: #{$grape-5};
+  --grape-6: #{$grape-6};
+  --grape-7: #{$grape-7};
+  --grape-8: #{$grape-8};
+  --grape-9: #{$grape-9};
+
+  // Violet colors
+  --violet-0: #{$violet-0};
+  --violet-1: #{$violet-1};
+  --violet-2: #{$violet-2};
+  --violet-3: #{$violet-3};
+  --violet-4: #{$violet-4};
+  --violet-5: #{$violet-5};
+  --violet-6: #{$violet-6};
+  --violet-7: #{$violet-7};
+  --violet-8: #{$violet-8};
+  --violet-9: #{$violet-9};
+
+  // Indigo colors
+  --indigo-0: #{$indigo-0};
+  --indigo-1: #{$indigo-1};
+  --indigo-2: #{$indigo-2};
+  --indigo-3: #{$indigo-3};
+  --indigo-4: #{$indigo-4};
+  --indigo-5: #{$indigo-5};
+  --indigo-6: #{$indigo-6};
+  --indigo-7: #{$indigo-7};
+  --indigo-8: #{$indigo-8};
+  --indigo-9: #{$indigo-9};
+
+  // Blue colors
+  --blue-0: #{$blue-0};
+  --blue-1: #{$blue-1};
+  --blue-2: #{$blue-2};
+  --blue-3: #{$blue-3};
+  --blue-4: #{$blue-4};
+  --blue-5: #{$blue-5};
+  --blue-6: #{$blue-6};
+  --blue-7: #{$blue-7};
+  --blue-8: #{$blue-8};
+  --blue-9: #{$blue-9};
+
+  // Cyan colors
+  --cyan-0: #{$cyan-0};
+  --cyan-1: #{$cyan-1};
+  --cyan-2: #{$cyan-2};
+  --cyan-3: #{$cyan-3};
+  --cyan-4: #{$cyan-4};
+  --cyan-5: #{$cyan-5};
+  --cyan-6: #{$cyan-6};
+  --cyan-7: #{$cyan-7};
+  --cyan-8: #{$cyan-8};
+  --cyan-9: #{$cyan-9};
+
+  // Teal colors
+  --teal-0: #{$teal-0};
+  --teal-1: #{$teal-1};
+  --teal-2: #{$teal-2};
+  --teal-3: #{$teal-3};
+  --teal-4: #{$teal-4};
+  --teal-5: #{$teal-5};
+  --teal-6: #{$teal-6};
+  --teal-7: #{$teal-7};
+  --teal-8: #{$teal-8};
+  --teal-9: #{$teal-9};
+
+  // Green colors
+  --green-0: #{$green-0};
+  --green-1: #{$green-1};
+  --green-2: #{$green-2};
+  --green-3: #{$green-3};
+  --green-4: #{$green-4};
+  --green-5: #{$green-5};
+  --green-6: #{$green-6};
+  --green-7: #{$green-7};
+  --green-8: #{$green-8};
+  --green-9: #{$green-9};
+
+  // Lime colors
+  --lime-0: #{$lime-0};
+  --lime-1: #{$lime-1};
+  --lime-2: #{$lime-2};
+  --lime-3: #{$lime-3};
+  --lime-4: #{$lime-4};
+  --lime-5: #{$lime-5};
+  --lime-6: #{$lime-6};
+  --lime-7: #{$lime-7};
+  --lime-8: #{$lime-8};
+  --lime-9: #{$lime-9};
+
+  // Yellow colors
+  --yellow-0: #{$yellow-0};
+  --yellow-1: #{$yellow-1};
+  --yellow-2: #{$yellow-2};
+  --yellow-3: #{$yellow-3};
+  --yellow-4: #{$yellow-4};
+  --yellow-5: #{$yellow-5};
+  --yellow-6: #{$yellow-6};
+  --yellow-7: #{$yellow-7};
+  --yellow-8: #{$yellow-8};
+  --yellow-9: #{$yellow-9};
+
+  // Orange colors
+  --orange-0: #{$orange-0};
+  --orange-1: #{$orange-1};
+  --orange-2: #{$orange-2};
+  --orange-3: #{$orange-3};
+  --orange-4: #{$orange-4};
+  --orange-5: #{$orange-5};
+  --orange-6: #{$orange-6};
+  --orange-7: #{$orange-7};
+  --orange-8: #{$orange-8};
+  --orange-9: #{$orange-9};
+
+  // Semantic colors
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --success-bg: #{$success-bg};
+  --success-primary: #{$success-primary};
+  --danger-bg: #{$danger-bg};
+  --danger-primary: #{$danger-primary};
+  --bg-dark: #{$bg-dark};
+  --bg-light: #{$bg-light};
+}

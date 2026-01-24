@@ -1,0 +1,84 @@
+@use '../../sass/bases/colours';
+//@use '../../base/_reset';
+
+svg {
+    &.filter {
+        display: none;
+    }
+}
+
+button {
+    padding: 1rem;
+    font-size: 2rem;
+    border: none;
+    position: relative;
+    // @include theme($theme: $bgGradient);
+    color: colours.$dark-8;
+    border-radius: 15px;
+    background-color: colours.$dark-0;
+    filter: url('#blob');
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+    background-color: colours.$dark-3;
+    color: colours.$dark-0;
+    transition: 0.2s;
+    }
+}
+.bubbles {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .bubble {
+        background-color: colours.$dark-3;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        left: 0px;
+        display: block;
+        z-index: -1;
+        &:hover {
+            background-color: colours.$dark-0;
+        }
+
+        @for $bubble from 1 through 10 { 
+            &:nth-child(#{$bubble}) {
+                $size:35px;
+                left: (random(150)+ 10)+px;
+                width: $size;
+                height: $size;
+                animation: move-#{$bubble} #{3 + $bubble*0.02}s infinite;
+                animation-delay: #{$bubble*0.2}s;
+            }
+        }
+
+        //&:hover {
+         //   background-color: colours.$dark-3;
+       // }
+    }
+}
+
+@for $bubble from 1 through 10 {
+    @keyframes move-#{$bubble} {
+        0% {
+            transform: translate(0,0);
+        }
+        99% {
+            transform: translate(0,-(random(200)+ 50)+px);
+        }
+        100% {
+            transform: translate(0,0);
+            opacity: 0;
+        }
+    }
+}
+.buttpos {
+    position: absolute;
+    top: 75%;
+    align-items: center;
+}

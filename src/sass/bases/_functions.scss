@@ -1,0 +1,20 @@
+/* Automate your stuff */
+@use 'sass:math';
+
+
+@function rem($pixel) {
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + rem; 
+    }
+    @else {
+    @error 'Don\'t Add px or others in the rem(), please remove that, only numbers.';
+    }
+}
+@function em($pixel) {
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + em; 
+    }
+    @else {
+    @error 'Don\'t Add px or others in the em(), please remove that, only numbers.';
+    }
+}

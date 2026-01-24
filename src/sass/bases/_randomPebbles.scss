@@ -1,0 +1,61 @@
+@use 'variables' as *;
+@use '../bases/colours' as c;
+
+.randomise {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 300vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: clip;
+    pointer-events: none;
+}
+
+.randomise .blocks {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+} 
+
+body.light {
+    .randomise .blocks {
+        background-color: c.$bg-light;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.311),
+                    0 0 8px 8px rgba(0, 0, 0, 0.159) inset;
+ 
+        outline: 2px solid rgba(73, 124, 129, 0.234);
+        border-style: solid ;
+        border-color: c.$gray-4;
+        border-width: 0.2px;
+    }
+    // .randomise .blocks:nth-child(3n + 1) {
+    //     background: radial-gradient(ellipse at center, #44444479, #b0b0b079); }
+    // .randomise .blocks:nth-child(3n + 2) {
+    //     background: radial-gradient(ellipse at center, #ffffff71, #6e6c6c79); }
+    // .randomise .blocks:nth-child(3n + 3) {
+    //     background: radial-gradient(ellipse at center, #6262ae7b, #b0b0b079);}
+
+}
+body.dark {
+    .randomise .blocks {
+        background-color: c.$bg-dark;
+        border: 0.5px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5) inset;
+        outline: 0.2px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.11);
+        border-style: solid ;
+        border-color: #444;
+        border-width: 0.2px;
+    }
+    .randomise .blocks:nth-child(3n + 1) {
+        background: radial-gradient(ellipse at center, #44444479, #b0b0b079); }
+    .randomise .blocks:nth-child(3n + 2) {
+        background: radial-gradient(ellipse at center, #ffffff71, #6e6c6c79); }
+    .randomise .blocks:nth-child(3n + 3) {
+        background: radial-gradient(ellipse at center, #6262ae7b, #b0b0b079);}
+
+}

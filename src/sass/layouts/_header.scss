@@ -1,0 +1,20 @@
+/* LAYOUT STYLES */
+@use '../bases/functions' as f;
+@use '../bases/colours' as c;
+
+.header__hide {
+    position: fixed;
+    top:0;
+    border-bottom: f.em(2) solid rgba(c.$gray-0, 0.7);
+    box-shadow: inset 0 -10px 10px -10px rgba(0,0,0,0.5);
+    width: 100%;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+.menu__row {
+    position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    right: 0;
+}

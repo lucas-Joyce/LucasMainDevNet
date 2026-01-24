@@ -1,0 +1,23 @@
+@use '../bases/colours' as *;
+
+body.light {
+  background: $bg-light;
+  color: $dark-9;
+      .transparentBlur {
+        background-color: rgba($bg-light, 0.4);
+    };
+        .background {
+        background: $bg-light;
+    };
+}
+
+body.dark {
+  background: $bg-dark;
+  color: $dark-0;
+      .transparentBlur {
+        background-color: rgba($bg-dark, 0.4);
+    };
+        .background {
+        background-color: $bg-dark;
+    };
+}

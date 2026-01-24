@@ -1,0 +1,77 @@
+/* TYPOGRAPHY */
+@use 'variables' as *;
+@use 'mixins' as m;
+
+/* Playpen Sans */
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-Thin', 100, 'thin');
+}
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-ExtraLight', 200, 'extralight');
+}
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-Light', 300, 'light');
+}
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-Regular', 400, 'regular');
+}
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-Medium', 500, 'medium');
+}
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-SemiBold', 600, 'semibold');
+}
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-Bold', 700, 'bold');
+}
+@font-face {
+    @include m.font($typoPlaypenSans, 'PlaypenSans', 'PlaypenSans-ExtraBold', 800, 'extrabold');
+}
+
+/* Fredericka the Great */
+@font-face {
+    @include m.font($typoFrederickaTheGreat, 'FrederickaTheGreat' , 'FrederickatheGreat-Regular', 400, 'regular');
+}
+
+/* Post No Bills Jaffna */
+@font-face {
+    @include m.font($typoPNBJaffna, 'PostNoBillsJaffna', 'PostNoBillsJaffna-Light', 300, 'light');
+}
+@font-face {
+    @include m.font($typoPNBJaffna, 'PostNoBillsJaffna', 'PostNoBillsJaffna-Regular', 400, 'regular');
+}
+@font-face {
+    @include m.font($typoPNBJaffna, 'PostNoBillsJaffna', 'PostNoBillsJaffna-Medium', 500, 'medium');
+}
+@font-face {
+    @include m.font($typoPNBJaffna, 'PostNoBillsJaffna', 'PostNoBillsJaffna-SemiBold', 600, 'semibold');
+}
+@font-face {
+    @include m.font($typoPNBJaffna, 'PostNoBillsJaffna', 'PostNoBillsJaffna-Bold', 700, 'bold');
+}
+@font-face {
+    @include m.font($typoPNBJaffna, 'PostNoBillsJaffna', 'PostNoBillsJaffna-ExtraBold', 800, 'extrabold');
+}
+
+/* Post No Bills Colombo */
+@font-face {
+    @include m.font($typoPNBColombo, 'PostNoBillsColombo', 'PostNoBillsColombo-Light', 300, 'light');
+}
+@font-face {
+    @include m.font($typoPNBColombo, 'PostNoBillsColombo', 'PostNoBillsColombo-Regular', 400, 'regular');
+}
+@font-face {
+    @include m.font($typoPNBColombo, 'PostNoBillsColombo', 'PostNoBillsColombo-Medium', 500, 'medium');
+}
+@font-face {
+    @include m.font($typoPNBColombo, 'PostNoBillsColombo', 'PostNoBillsColombo-SemiBold', 600, 'semibold');
+}
+@font-face {
+    @include m.font($typoPNBColombo, 'PostNoBillsColombo', 'PostNoBillsColombo-Bold', 700, 'bold');
+}
+@font-face {
+    @include m.font($typoPNBColombo, 'PostNoBillsColombo', 'PostNoBillsColombo-ExtraBold', 800, 'extrabold');
+}
+
+
+

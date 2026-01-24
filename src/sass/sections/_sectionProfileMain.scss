@@ -1,0 +1,180 @@
+@use "../../sass/bases/variables" as v;
+@use '../bases/media' as *;
+
+.mainSection {
+    position: relative;
+    display: flex;
+    width: 100%;
+    background: transparent;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 100vh;
+    max-width: 2048px;
+}
+.enquiry {
+    font-family: v.$typoPNBColombo;
+    align-items: center;
+    font-style: normal;
+    line-height: 144px;
+
+    @include respond('mobile') {
+            font-size: 25px;
+            font-weight: 400; 
+
+    }
+        @include respond('tablet') {
+            font-size: 22px;
+            font-weight: 400;
+  
+    }
+            @include respond('desktop') {
+            position: absolute;
+            top: 230px;
+            right: 100px;
+            font-size: 50px;
+            font-weight: 800;
+            line-height: 144px;
+
+    }
+        @include respond('wide') {
+            position: absolute;
+            top: 230px;
+            right: 100px;
+            font-size: 70px;
+            font-weight: 800;
+            line-height: 144px;
+
+    }
+        @include respond('ultrawide') {
+            position: absolute;
+            top: 230px;
+            right: 100px;
+            font-size: 110px;
+            font-weight: 800;
+            line-height: 144px;   
+
+    }
+}
+.web {
+    position: absolute;
+    top: 40px;
+    font-family: v.$typoPNBColombo;
+    
+     @include respond('mobile') {
+            font-size: 25px;
+            font-weight: 400; 
+            letter-spacing: 0.5em;
+            filter: blur(1px);
+    }
+        @include respond('tablet') {
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 0.5em;
+            filter: blur(1px);    
+    }
+            @include respond('desktop') {
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 0.5em;
+            filter: blur(1px);
+    }
+        @include respond('wide') {
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: 0.5em;
+            filter: blur(1px);
+    }
+        @include respond('ultrawide') {
+            font-size: 90px;
+            font-weight: 800;   
+            letter-spacing: 0.6em;
+            filter: blur(4px);
+    }
+}
+.dev {
+    font-family: v.$typoPNBColombo;
+         @include respond('mobile') {
+            position: relative;
+            font-size: 50px;
+            font-weight: 600; 
+    }
+        @include respond('tablet') {
+            position: absolute;
+            font-size: 22px;
+            font-weight: 400;
+    }
+        @include respond('desktop') {
+            position: absolute;
+            left: 40px;
+            top: 180px;
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            line-height: 96px;
+            align-items: center;
+    }
+        @include respond('wide') {
+            position: absolute;
+            left: 40px;
+            top: 180px;
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            line-height: 96px;
+            align-items: center;
+    }
+        @include respond('ultrawide') {
+            position: absolute;
+            left: 80px;
+            top: 100px;
+            font-size: 100px;
+            font-weight: 900;
+            letter-spacing: 0.5em;
+            line-height: 96px;
+            align-items: center;   
+    }
+}
+
+.interaction {
+    position: absolute;
+    top: 530px;
+    font-family: v.$typoPNBColombo;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 0.08em;
+}
+
+.design {
+    position: absolute;
+    top: 580px;
+    font-family: v.$typoPNBColombo;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 0.08em;
+}
+
+.quote {
+    font-family: v.$typoPNBJaffna;
+    font-size: 30px;
+    font-weight: 300;
+    padding: 15px;
+    justify-content: center;
+
+    
+     @include respond('mobile') {
+            font-size: 23px;
+    }
+        @include respond('tablet') {
+            font-size: 22px;    
+    }
+            @include respond('desktop') {
+            font-size: 32px;    
+    }
+        @include respond('wide') {
+            font-size: 42px;
+    }
+        @include respond('ultrawide') {
+            font-size: 60px;
+            font-weight: 300;   
+    }
+}

@@ -1,0 +1,72 @@
+
+// .form {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 10px;
+//     width: 100%;
+// }
+// .enterInput {
+//     display: flex;
+//     border-radius: 5px;
+// }
+// .enterTextArea{
+//     display: block;
+//     border-radius: 5px;
+//     padding: 5px;
+// }
+// .enterSubmit{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     border-radius: 5px;
+//     cursor: pointer;
+//     max-width: 100px;
+// }
+// .enterSubmit:hover{
+//     background: #F9D100;
+// }
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    width: 100%;
+}
+
+.enterInput {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.enterTextArea {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.enterSubmit {
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    max-width: 100px;
+}
+
+.enterSubmit:hover {
+    background: #F9D100;
+}
+.input {
+    margin:0.3rem;
+
+label {
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0.2rem;
+    background: pink;
+}
+}

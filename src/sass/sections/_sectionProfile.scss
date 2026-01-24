@@ -1,0 +1,249 @@
+@use '../bases/colours' as *;
+@use '../bases/variables' as v;
+@use '../bases/media' as *;
+//@use 'src/base/_fonts.sass'
+//@use '../bases/reset';
+
+.profileSection {
+    position: relative;
+    //padding: 200px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: transparent;
+    //justify-content: center;
+    align-items: center;
+    //height: calc(100vh - v.$headerHeight);
+    flex-shrink: 0;
+    height: 100vh;
+    max-width: 2048px;
+    margin-top: v.$headerHeight;
+    //margin: 0 auto;
+        @media (orientation: landscape) and (max-height: 900px) {
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+}
+
+.profilePos {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    //margin-top: v.$headerHeight;
+    //justify-content: center;
+    padding: 10px;
+    //left:calc(50% - 390px);
+    //width: 660px;
+    //height: 464px;
+}
+    
+.avatar {
+    position: relative;
+    width: 330px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 60px;
+    //left: 280px;
+    //top: 100px;
+    clip-path: ellipse(200px 320px at 150px 130px);
+    // filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+.coder {
+    position: absolute;
+    align-items: center;
+    top: 40px;
+    left: 320px;
+    font-family: 'Post No Bills Colombo';
+    font-weight: 800;
+    font-size: 31px;
+    white-space: nowrap;
+    transition: all 0.5s ease;
+    @media (max-width: 400px) {
+        //left: auto;
+        //right: 60px;  // Align with avatar right edge
+        transform: translateX(-60px);
+    }
+}
+.designer {
+    position: absolute;
+    align-items: center;
+    padding-left: 15px;
+    left:0px;
+    top: 270px;
+    font-family: 'Post No Bills Colombo';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 54px;
+    //z-index: 10;
+    transition: all 0.5s ease;
+
+        @media (max-width: 400px) {
+            left: 30px;  
+    }
+        @include respond('mobile') {
+            padding-left: 10px;
+    }
+        @include respond('tablet') {
+            padding-left: 15px;
+    }
+            @include respond('desktop') {
+            padding-left: 15px;
+    }
+        @include respond('wide') {
+            padding-left: 15px;
+    }
+        @include respond('ultrawide') {
+            padding-left: 15px;
+    }
+    
+}
+
+
+.LjLink {
+    position: relative;
+    padding: 5px;
+    display: block;
+    //margin-top: 10px;
+    //top:800px;
+    align-items: center;
+}
+
+.LucasJoyce {
+    font-family: 'Fredericka the Great', cursive;
+    font-style: normal;
+    font-weight: 400;
+    // font-size: 128px;
+    // line-height: 157px;
+    text-align: center;
+
+        @include respond('mobile') {
+            font-size: 55px;
+            //line-height: 60px;
+    }
+        @include respond('tablet') {
+            font-size: 80px;    
+            line-height: 100px;
+    }
+            @include respond('desktop') {
+            font-size: 120px;    
+            line-height: 10px;
+    }
+        @include respond('wide') {
+            font-size: 160px;
+            line-height: 110px;
+    }
+        @include respond('ultrawide') {
+            position: absolute;
+            top:-700px;
+            right:150px;
+            font-size: 200px;   
+            line-height: 250px;
+    }
+}    
+
+.linkTag {
+    position: relative;
+    display: flex;
+    top: -38px;
+    font-family: 'Post No Bills Colombo';
+    font-style: normal;
+    font-weight: 500;
+    justify-content: flex-end;
+    text-decoration-line: underline;
+    padding-right: 30px;
+    cursor: pointer;
+    
+
+     @include respond('mobile') {
+            font-size: 22px;
+            line-height: 28px;
+    }
+        @include respond('tablet') {
+            font-size: 22px;    
+            line-height: 38px;
+    }
+            @include respond('desktop') {
+            font-size: 32px;    
+            line-height: 48px;
+            font-weight: 500;
+    }
+        @include respond('wide') {
+            font-size: 42px;
+            line-height: 62px;
+            font-weight: 500;
+    }
+        @include respond('ultrawide') {
+            top: -580px;
+            padding-right: 80px;
+            font-size: 40px;
+            font-weight: 700;   
+            line-height: 70px;
+            font-style: italic;
+    }
+}
+
+
+body.light {
+        .avatar {
+        filter: grayscale(100%);
+        //transition: filter 0.5s ease;
+    };
+        .LucasJoyce {
+        color: $dark-9;
+        //text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3), 20px 20px 40px rgba(0, 0, 0, 0.3);
+    }
+        .close:hover {
+        color: blue;
+    };
+        .dev {
+        color: $gray-0;
+        -webkit-text-stroke:2px $dark-9;
+    };
+        .web {
+        color: $gray-3;
+    };
+        .close 
+        .designer  
+        .coder 
+        .linkTag 
+        .text 
+        .enquiry 
+        .interaction 
+        .design {
+        color: $dark-9;
+    };
+}
+body.dark {
+        .avatar {
+        filter: invert(100%) grayscale(100%);
+        transition: filter 0.5s ease;
+    };    
+
+            .LucasJoyce {
+        color: $dark-0;
+        //text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3), 20px 20px 40px rgba(0, 0, 0, 0.3);
+    }
+        .close 
+        .designer 
+        .coder 
+        .linkTag 
+        .text 
+        .enquiry 
+        .interaction 
+        .design {
+        color: $dark-0;
+    };
+        .close:hover {
+        color: rgb(175, 47, 255);
+    };
+        .dev {
+        color: $lime-4;
+        -webkit-text-stroke:2px $dark-0;
+    };
+        .web {
+        color: $gray-6;
+    }
+}

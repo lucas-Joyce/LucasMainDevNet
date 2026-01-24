@@ -1,0 +1,132 @@
+//@use '../bases/typography' as t;
+//@use '../bases/mixins' as m;
+
+// #bioHook {
+//     width: 100%;
+//     height: 100%;
+//     justify-content: center;
+//     align-items: center;
+//     position: absolute;
+//     display: flex;
+//     margin: 0 auto;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+    
+.sticker {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 440px; //460px;
+    height: 300px; //320px;
+    clip-path: inset(0px 1px);
+    background: #F9D100;
+    border-radius: 60px;
+    transform: rotate(-20deg);
+}
+
+.inner {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 440px;
+    height: 280px;
+    background: #1E1E1E;
+    border: 10px solid #1E1E1E;
+    border-radius: 50px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+}
+.upper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 2px;
+    gap: 10px;
+    width: 420px;
+    height: 146px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.caution {
+    width: 351px;
+    height: 119px;
+    font-family: 'Post No Bills Colombo';
+    //font-family: t.$typoPNBColombo;
+    font-style: 'extrabold';
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 144px;
+    text-align: center;
+    color: #F9D100;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+.bars {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    width: 725px;
+    height: 17px;
+    background: #F9D100;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    clip-path: inset(0px 0px);
+}
+
+.blackStripe {
+    width: 34.81px;
+    height: 135.54px;
+    background: #1E1E1E;
+    transform: matrix(0.94, -0.34, -0.18, 0.98, 0, 0);
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.lower {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 419px;
+    height: 135px;
+    border-radius: 0px 0px 45px 45px;
+    background: #F9D100;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.labelDetail {
+    width: 339px;
+    height: 100px;
+    font-family: 'Post No Bills Colombo';
+    //font-family: t.$typoPNBColombo;
+    //font-style: 'light';
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 50px;
+    text-align: center;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+

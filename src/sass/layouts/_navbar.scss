@@ -1,0 +1,110 @@
+//@import '../bases/typography';
+@use '../bases/variables' as *;
+//@use '../bases/typography' as t;
+@use '../bases/functions' as f;
+@use '../bases/colours' as c;
+@use '../bases/media' as *;
+
+nav {
+   //position: fixed;
+    background-color: rgba(c.$dark-0, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $headerHeight;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.7) ;
+    box-shadow: inset 0 -10px 10px -10px rgba(0,0,0,0.5);
+    padding-right: 40px; //**
+    transition: 0.5s;
+    a {
+        display:block;
+        margin: 20px;
+    }
+    }
+    .dropMenu {
+          .historyTab {
+      display: none;
+    }
+  }
+    //transparent
+    // ul {
+    //     display: flex;
+    //     justify-content: space-evenly;c.$blue-7
+    //     list-style: none;
+    //     align-items: center;
+    //     cursor: pointer;
+    //     margin: 5px;
+    //     a {
+    //         text-decoration: none;
+    //         padding-right: 1.6rem;
+    //         text-transform: uppercase;
+    //         font-weight: 800;
+    //         font-size: 1rem;
+    //         letter-spacing: 0.5rem;
+    //     }
+    //     h3 {
+    //         text-decoration: none;
+    //         font-family: $typoPlaypenSans;
+    //         padding-right: 1.6rem;
+    //         font-weight: 300;
+    //         font-style: thin;
+    //         font-size: 1rem;
+    //         letter-spacing: 0.5rem;
+    //       }
+    // }
+
+.ul__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style-type: none;
+    align-items: center;
+    cursor: pointer;
+    margin: f.em(5);
+
+    @include respond('mobile') {
+      //justify-content:flex-start;
+      padding-inline-start: 3px;
+    }
+
+}
+.li__text h3 {
+          text-decoration: none;
+          font-family: $typoPlaypenSans;
+          padding-right: 1.6rem;
+          font-weight: 300;
+          font-style: thin;
+          font-size: 1rem;
+          letter-spacing: 0.5rem;
+              @include respond('mobile') {
+                  //padding-right: 0.3rem;
+                  letter-spacing: 0.25rem;
+    }
+
+}
+.li__icon a {
+          text-decoration: none;
+          text-transform: uppercase;
+          font-weight: 800;
+          font-size: 1rem;
+          letter-spacing: 0.5rem;
+            @include respond('mobile') {
+                  //padding-right: 0.3rem;
+                  display: none;
+    }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    .lj-icon {
+      animation: App-logo-spin infinite 20s linear;
+  }
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

@@ -1,0 +1,53 @@
+/* MIXINS */
+@use 'variables' as *;
+@use 'colours' as c;
+
+//@import '../../icons/';
+
+@mixin iconWH($names) {
+    width: 40px;
+    height: 40px;
+    background: url('../icons/#{$names}.svg');
+    background-size: cover;
+}
+
+@mixin font($family, $fontFolderName, $fileNameTFF, $weight, $style ) {
+    $folderPath: '../fonts/'; //'~public/fonts/'
+    font-family: '#{$family}';
+    src: url('#{$folderPath}#{$fontFolderName}/#{$fileNameTFF}.ttf') format('truetype');//
+    font-weight: #{$weight};
+    font-style: #{$style};
+}
+
+
+@mixin JcAi-Center() {
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin basicPageLayout() {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: transparent;
+    margin: 0 auto;
+}
+
+@mixin light() {
+    color: c.$dark-7;
+    background-color: c.$dark-0;
+    transition: 0.5s;
+}
+
+@mixin dark() {
+    color: c.$dark-0;
+    background-color: c.$dark-7;
+    transition: 0.5s;
+}

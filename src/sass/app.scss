@@ -1,0 +1,12 @@
+//@use './bases/typography.scss' as t;
+
+// CSS Custom Properties Bridge - exports SCSS variables to JavaScript
+@import './exports/css-variables.scss';
+
+@import './bases/bases-dir.scss';
+@import './layouts/layouts-dir.scss';
+@import './modules/modules-dir.scss';
+@import './pages/pages-dir.scss';
+@import './plugins/plugin-dir.scss';
+@import './themes/themes-dir.scss';
+@import './components/components-dir.scss';

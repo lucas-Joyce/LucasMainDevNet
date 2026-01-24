@@ -1,0 +1,18 @@
+@use 'mixins' as i;
+.facebook-icon {@include i.iconWH('facebook');}
+.jira-icon {@include i.iconWH('jira');}
+.figma-icon {@include i.iconWH('figma');}
+.html5-icon {@include i.iconWH('html5');}
+.sass-icon {@include i.iconWH('sass');}
+.react-icon {@include i.iconWH('react');}
+.node-icon {@include i.iconWH('node');}
+.python-icon {@include i.iconWH('python');}
+.docker-icon {@include i.iconWH('docker');}
+.flask-icon {@include i.iconWH('flask');}
+//.github-icon {@include i.iconWH('github');}
+.django-icon {@include i.iconWH('django');}
+//.filearrowdown-icon {@include i.iconWH('filearrowdown');}
+//.lj-icon {@include i.iconWH('LJ');}
+#sun-icon {@include i.iconWH('sun');}
+#moon-icon {@include i.iconWH('moon');}
+//.deafhands-icon {@include i.iconWH('deafhands');}

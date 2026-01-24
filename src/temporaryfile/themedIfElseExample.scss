@@ -1,0 +1,335 @@
+// ============================================
+// SCSS IF/ELSE FOR DARK MODE & LIGHT MODE
+// ============================================
+
+// Define theme variable
+$theme: 'dark'; // Change to 'light' to switch themes
+
+// ============================================
+// METHOD 1: Simple If/Else
+// ============================================
+
+@if $theme == 'dark' {
+  $bg-color: #0a0a0a;
+  $text-color: #ffffff;
+  $accent-color: #ff8c00;
+  $glow: 0 0 10px rgba(255, 140, 0, 0.8);
+  
+  body {
+    background: $bg-color;
+    color: $text-color;
+  }
+  
+  .card {
+    background: rgba(255, 140, 0, 0.05);
+    box-shadow: $glow;
+  }
+  
+  h1 {
+    color: $accent-color;
+    text-shadow: $glow;
+  }
+} @else {
+  $bg-color: #ffffff;
+  $text-color: #333333;
+  $accent-color: #ff6600;
+  
+  body {
+    background: $bg-color;
+    color: $text-color;
+  }
+  
+  .card {
+    background: #fff5e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: $accent-color;
+    text-shadow: none;
+  }
+}
+
+// ============================================
+// METHOD 2: Using Mixins with If/Else
+// ============================================
+
+@mixin theme-styles($theme-type) {
+  @if $theme-type == 'dark' {
+    background: #0a0a0a;
+    color: #ffffff;
+    border-color: rgba(255, 140, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+    
+    &:hover {
+      box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
+    }
+  } @else if $theme-type == 'light' {
+    background: #ffffff;
+    color: #333333;
+    border-color: #ffcc99;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+// Apply mixin
+.themed-card {
+  @include theme-styles('dark');
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid;
+}
+
+// ============================================
+// METHOD 3: Function for Theme Values
+// ============================================
+
+@function theme-color($color-name, $theme-mode: 'dark') {
+  @if $theme-mode == 'dark' {
+    @if $color-name == 'background' {
+      @return #0a0a0a;
+    } @else if $color-name == 'text' {
+      @return #ffffff;
+    } @else if $color-name == 'primary' {
+      @return #ff8c00;
+    } @else if $color-name == 'secondary' {
+      @return #ffaa33;
+    } @else if $color-name == 'surface' {
+      @return #1a1a1a;
+    }
+  } @else if $theme-mode == 'light' {
+    @if $color-name == 'background' {
+      @return #ffffff;
+    } @else if $color-name == 'text' {
+      @return #333333;
+    } @else if $color-name == 'primary' {
+      @return #ff6600;
+    } @else if $color-name == 'secondary' {
+      @return #ff9933;
+    } @else if $color-name == 'surface' {
+      @return #f5f5f5;
+    }
+  }
+  @return null;
+}
+
+// Usage
+.header {
+  background: theme-color('background', 'dark');
+  color: theme-color('text', 'dark');
+}
+
+.button-primary {
+  background: theme-color('primary', 'dark');
+  
+  &:hover {
+    background: theme-color('secondary', 'dark');
+  }
+}
+
+// ============================================
+// METHOD 4: Map-based Theme System (BEST PRACTICE)
+// ============================================
+
+$themes: (
+  dark: (
+    background: #0a0a0a,
+    text: #ffffff,
+    primary: #ff8c00,
+    secondary: #ffaa33,
+    surface: #1a1a1a,
+    border: rgba(255, 140, 0, 0.3),
+    shadow: 0 0 20px rgba(255, 140, 0, 0.2),
+    glow: 0 0 10px rgba(255, 140, 0, 0.8)
+  ),
+  light: (
+    background: #ffffff,
+    text: #333333,
+    primary: #ff6600,
+    secondary: #ff9933,
+    surface: #f5f5f5,
+    border: #ffcc99,
+    shadow: 0 2px 8px rgba(0, 0, 0, 0.1),
+    glow: none
+  )
+);
+
+// Mixin to apply theme
+@mixin apply-theme($theme-name) {
+  $theme: map-get($themes, $theme-name);
+  
+  @if $theme {
+    background: map-get($theme, background);
+    color: map-get($theme, text);
+    border: 2px solid map-get($theme, border);
+    box-shadow: map-get($theme, shadow);
+  }
+}
+
+// Usage
+.app {
+  @include apply-theme('dark');
+  min-height: 100vh;
+  padding: 20px;
+}
+
+// ============================================
+// METHOD 5: Component-specific Theme Logic
+// ============================================
+
+@mixin button-theme($mode) {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  @if $mode == 'dark' {
+    background: linear-gradient(135deg, #ff8c00, #ff6600);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+    
+    &:hover {
+      box-shadow: 0 0 25px rgba(255, 140, 0, 0.8);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
+      transform: translateY(0);
+    }
+  } @else if $mode == 'light' {
+    background: linear-gradient(135deg, #ff9933, #ff6600);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+    
+    &:hover {
+      box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      box-shadow: 0 2px 8px rgba(255, 102, 0, 0.3);
+      transform: translateY(0);
+    }
+  }
+}
+
+.btn-primary {
+  @include button-theme('dark');
+}
+
+// ============================================
+// METHOD 6: Dynamic Theme Switching with CSS Variables
+// ============================================
+
+@mixin generate-theme-variables($mode) {
+  @if $mode == 'dark' {
+    --color-bg: #0a0a0a;
+    --color-text: #ffffff;
+    --color-primary: #ff8c00;
+    --color-secondary: #ffaa33;
+    --color-surface: #1a1a1a;
+    --glow-strength: 0 0 20px rgba(255, 140, 0, 0.6);
+    --shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+  } @else if $mode == 'light' {
+    --color-bg: #ffffff;
+    --color-text: #333333;
+    --color-primary: #ff6600;
+    --color-secondary: #ff9933;
+    --color-surface: #f5f5f5;
+    --glow-strength: none;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+:root {
+  @include generate-theme-variables('dark');
+}
+
+// Usage with CSS variables
+.dynamic-card {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  border-radius: 10px;
+  
+  h2 {
+    color: var(--color-primary);
+    text-shadow: var(--glow-strength);
+  }
+}
+
+// ============================================
+// METHOD 7: Multiple Conditions (if/else if/else)
+// ============================================
+
+$screen-size: 'desktop'; // 'mobile', 'tablet', 'desktop'
+$theme-variant: 'dark'; // 'dark', 'light', 'auto'
+
+@mixin responsive-theme($size, $theme) {
+  @if $size == 'mobile' and $theme == 'dark' {
+    font-size: 14px;
+    padding: 10px;
+    background: #000000;
+  } @else if $size == 'mobile' and $theme == 'light' {
+    font-size: 14px;
+    padding: 10px;
+    background: #ffffff;
+  } @else if $size == 'tablet' and $theme == 'dark' {
+    font-size: 16px;
+    padding: 15px;
+    background: #0a0a0a;
+  } @else if $size == 'tablet' and $theme == 'light' {
+    font-size: 16px;
+    padding: 15px;
+    background: #fafafa;
+  } @else if $size == 'desktop' and $theme == 'dark' {
+    font-size: 18px;
+    padding: 20px;
+    background: #0a0a0a;
+  } @else if $size == 'desktop' and $theme == 'light' {
+    font-size: 18px;
+    padding: 20px;
+    background: #ffffff;
+  } @else {
+    // Fallback
+    font-size: 16px;
+    padding: 15px;
+    background: #1a1a1a;
+  }
+}
+
+.container {
+  @include responsive-theme('desktop', 'dark');
+}
+
+// ============================================
+// COMPILED CSS OUTPUT EXAMPLE
+// ============================================
+
+/* When $theme is set to 'dark', the compiled CSS will be:
+
+body {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.card {
+  background: rgba(255, 140, 0, 0.05);
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+}
+
+h1 {
+  color: #ff8c00;
+  text-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+}
+
+... and so on
+*/

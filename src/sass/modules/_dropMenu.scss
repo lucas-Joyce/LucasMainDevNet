@@ -1,0 +1,77 @@
+@use '../bases/colours' as c;
+@use '../bases/variables' as typo;
+@use '../bases/media' as *;
+
+@mixin pos() {
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0; 
+}
+
+.dropMenu {
+    @include pos();
+    //top: calc(100% + 30px);
+    //right: 290px;
+    width: 220px;
+    height: 100px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 15px;
+    font-family: typo.$typoPNBJaffna;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    list-style: none;
+    a {
+        text-decoration: none;
+        color: inherit; 
+            &:hover {
+                color: c.$orange-5;
+        }
+    }
+    &__onMe, 
+    &__onShowcase{
+    visibility: visible;
+    opacity: 1;
+  
+    }
+   
+} 
+@include respond('mobile') {
+    .dropMenu {
+        position: fixed;
+        width: auto;
+        top: 120px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        height: calc(100vh - 520px);
+        margin: 0;
+        padding: 20px;
+        border-radius: 15px;
+        z-index: 90;
+        font-size: 1.25rem;
+        li {
+            margin: 20px 0;
+        }
+    }
+}
+
+body.light {
+    .dropMenu {
+        background: c.$dark-0; 
+        color: c.$dropmenuLetters;     
+    }
+}
+
+body.dark {
+    .dropMenu {
+        background: c.$dark-0;       
+        color: c.$dropmenuLetters;  
+    }
+} 

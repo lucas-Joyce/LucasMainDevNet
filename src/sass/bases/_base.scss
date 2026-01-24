@@ -1,0 +1,37 @@
+/* BASES STYLES */
+@use 'variables' as *;
+//@use 'typography' as t;
+@use 'colours' as c;
+@use 'mixins' as m;
+
+
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: transparent;//c.$bgGradient
+    font-family: $typoPNBColombo;
+    font-weight: 800;
+    //scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &.light {
+        @include m.light;
+    }
+    &.dark {
+        @include m.dark;
+    }
+}
+#bioHook {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}

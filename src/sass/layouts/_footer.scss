@@ -1,0 +1,193 @@
+@use '../bases/colours' as *;
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;           
+    flex-shrink: 0; 
+    //min-height: 200px;
+    //background: linear-gradient(#fafafa00, #cfd1e184 );
+}
+.footerBanner {
+    background: orange;
+    height:30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.socialMedia {
+    background: transparent;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    min-height: 110px;
+    transition: 0.25s;
+}
+
+.media {
+    display: flex;
+    padding: 0;           
+    margin: 0;           
+    list-style: none; 
+    li {
+        list-style: none;
+        display: list-item;
+        position:relative;
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 10vw ;
+        pointer-events: none;
+        transition: 0.5s;
+        color: transparent;
+    }
+    &:hover::before {
+        transform: translate(-50%, calc(-50% - 150px));
+        opacity: 0.5;  // ← Add this if missing
+        color: transparent;
+        //color: colours.$dark-0;  // ← Add this if missing
+      
+    }  a .themed-icon{
+            display: flex;
+            margin: 0 auto;
+        }
+    .abe {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        border-radius: 40%;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $dark-9;
+        text-decoration: none;
+        //margin: 10px //10px;
+        //margin-left: 10px; //**
+        font-size: 3.3em;
+        //transition: background 0.25s;
+        padding-right: 0;
+        letter-spacing: 0;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 100%;
+            z-index: 10;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 1;
+            right: -1px;
+            width: 10px;
+            height: 100%;
+            filter:blur(100px);
+            z-index: 2;
+        }
+        &:hover {
+            &.linkedin {
+                background: linear-gradient($dark-0,#0099ff);
+            }
+            &.github {
+                background: linear-gradient($dark-0,#00ff44);
+            }
+            &.behance {
+                background: linear-gradient($dark-0,#e4405f);
+            }
+            &.dribble {
+                background: linear-gradient($dark-0,#0099ff) ;
+            }
+            svg {
+                  path, circle, rect, polygon {
+                fill: white !important;
+                }  
+                transform: scale(0.9) translateZ(890px)
+            }
+        }
+        svg {
+            transition: 0.25s;
+            //pointer-events: none;
+        }
+    }
+}
+}
+
+body.dark {
+    
+
+    .media li .abe:hover.linkedin {
+        background: linear-gradient($bg-dark,#0099ff);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.2);
+    }
+    .media li .abe:hover.github {
+        background: linear-gradient($bg-dark,#00ff44);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.2);
+    }
+    .media li .abe:hover.behance{
+        background: linear-gradient($bg-dark,#e4405f);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.2);
+    }
+    .media li .abe:hover.dribble {
+        background: linear-gradient($bg-dark,#0099ff);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.2);
+    }
+    .media li:hover::before {
+        color: $dark-0;
+        opacity: 0.5;
+    }
+    // .media li .abe {
+    //         svg path, svg circle, svg rect, svg polygon {
+    //     fill: $bg-light ;
+    // }
+    // }
+};
+body.light {
+    .media li:hover::before {
+        color: $bg-dark;
+        opacity: 0.5;
+    };
+
+    .media li .abe:hover.linkedin {
+        background: linear-gradient($dark-0,#0099ff);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
+    };
+
+    .media li .abe:hover.github {
+        background: linear-gradient($dark-0,#00ff44);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
+    };
+
+    .media li .abe:hover.behance {
+        background: linear-gradient($dark-0,#e4405f);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
+    };
+
+    .media li .abe:hover.dribble {
+        background: linear-gradient($dark-0,#0099ff);
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
+    };
+
+    .media li:hover::before {
+        color: $dark-2;
+        opacity: 0.5;
+    };
+    // .media li .abe {
+    //      svg path, svg circle, svg rect, svg polygon {
+    //     fill: $bg-dark ;
+    // }
+    // };
+}
