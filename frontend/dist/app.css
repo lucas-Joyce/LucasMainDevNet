@@ -1,0 +1,2931 @@
+/*!******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/modules/_toggleSwitch.scss ***!
+  \******************************************************************************************************************************/
+/* COLOURS */
+.toggle {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: plum;
+  transition: 0.5s;
+  cursor: pointer;
+  box-shadow: inset 0px 2px 60px rgba(0, 0, 0, 0.5), inset 0px 2px 8px rgba(255, 255, 255, 0.2), inset 0px -4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.toggle .indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: scale(0.9);
+  background: linear-gradient(to bottom, #eaeaea, hsl(233, 23%, 85%));
+  box-shadow: inset 0px 8px 40px rgba(0, 0, 0, 0.5), inset 0px 4px 4px rgba(255, 255, 255, 0.2), inset 0px -4px 4px rgba(255, 255, 255, 0.2);
+  transition: 0.5s;
+}
+
+.toggle .indicator #lightSun,
+.toggle .indicator #darkMoon {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+.toggle .indicator #lightSun {
+  width: 13px;
+  visibility: hidden;
+  opacity: 0;
+}
+.toggle .indicator #darkMoon {
+  width: 11px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.toggle.active .indicator {
+  align-items: center;
+  justify-content: center;
+  left: 20px;
+  box-shadow: inset 0px 8px 40px rgba(0, 0, 0, 0.5), inset 0px 4px 4px rgba(255, 255, 255, 0.2), inset 0px -4px 4px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to bottom, #444, hsl(225, 7%, 11%));
+}
+
+.toggle.active .indicator #darkMoon,
+.toggle.active .indicator #lightSun {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+.toggle.active .indicator #darkMoon {
+  width: 11px;
+  visibility: hidden;
+  opacity: 0;
+}
+.toggle.active .indicator #lightSun {
+  width: 13px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.toggle.active {
+  background: greenyellow;
+  box-shadow: inset 0px 8px 60px rgba(0, 0, 0, 0.1), inset 0px 8px 8px rgba(0, 0, 0, 0.1), inset 0px -4px 4px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(255, 255, 255, 0.2), 0px 0px 4px rgba(255, 255, 255, 0.2);
+}
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/modules/_dropMenu.scss ***!
+  \**************************************************************************************************************************/
+@charset "UTF-8";
+/* COLOURS */
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+}
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+.dropMenu {
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  width: 220px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+  font-family: "Post No Bills Jaffna";
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+  list-style: none;
+}
+.dropMenu a {
+  text-decoration: none;
+  color: inherit;
+}
+.dropMenu a:hover {
+  color: hsl(29, 100%, 58%);
+}
+.dropMenu__onMe, .dropMenu__onShowcase {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .dropMenu {
+    position: fixed;
+    width: auto;
+    top: 120px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    height: calc(100vh - 520px);
+    margin: 0;
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 90;
+    font-size: 1.25rem;
+  }
+  .dropMenu li {
+    margin: 20px 0;
+  }
+}
+body.light .dropMenu {
+  background: hsl(233, 23%, 85%);
+  color: hsl(225, 7%, 11%);
+}
+
+body.dark .dropMenu {
+  background: hsl(233, 23%, 85%);
+  color: hsl(225, 7%, 11%);
+}
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/modules/_backdrop.scss ***!
+  \**************************************************************************************************************************/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+  transition: 1s;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/layouts/_navbar.scss ***!
+  \************************************************************************************************************************/
+@charset "UTF-8";
+/* Automate your stuff */
+/* COLOURS */
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+}
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+nav {
+  background-color: rgba(208, 210, 226, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, 0.5);
+  padding-right: 40px;
+  transition: 0.5s;
+}
+nav a {
+  display: block;
+  margin: 20px;
+}
+
+.dropMenu .historyTab {
+  display: none;
+}
+
+.ul__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+  align-items: center;
+  cursor: pointer;
+  margin: 0.3125em;
+}
+@media (max-width: 480px) {
+  .ul__row {
+    padding-inline-start: 3px;
+  }
+}
+
+.li__text h3 {
+  text-decoration: none;
+  font-family: "Playpen Sans";
+  padding-right: 1.6rem;
+  font-weight: 300;
+  font-style: thin;
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+}
+@media (max-width: 480px) {
+  .li__text h3 {
+    letter-spacing: 0.25rem;
+  }
+}
+
+.li__icon a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+}
+@media (max-width: 480px) {
+  .li__icon a {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lj-icon {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*!************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/app.scss ***!
+  \************************************************************************************************************/
+@charset "UTF-8";
+/* COLOURS */
+/**
+ * CSS Custom Properties Bridge
+ * Converts SCSS variables to CSS custom properties for JavaScript access
+ * Single source of truth: _colours.scss
+ */
+:root {
+  --dark-0: hsl(233, 23%, 85%);
+  --dark-1: hsl(228, 3%, 66%);
+  --dark-2: hsl(220, 3%, 58%);
+  --dark-3: hsl(222, 5%, 38%);
+  --dark-4: hsl(220, 8%, 23%);
+  --dark-5: hsl(223, 7%, 19%);
+  --dark-6: hsl(230, 8%, 16%);
+  --dark-7: hsl(225, 7%, 11%);
+  --dark-8: hsl(220, 7%, 8%);
+  --dark-9: hsl(220, 9%, 7%);
+  --gray-0: hsl(210, 17%, 98%);
+  --gray-1: hsl(210, 17%, 95%);
+  --gray-2: hsl(210, 16%, 93%);
+  --gray-3: hsl(210, 14%, 89%);
+  --gray-4: hsl(210, 14%, 83%);
+  --gray-5: hsl(210, 11%, 71%);
+  --gray-6: hsl(210, 7%, 56%);
+  --gray-7: hsl(210, 9%, 31%);
+  --gray-8: hsl(210, 10%, 23%);
+  --gray-9: hsl(210, 11%, 15%);
+  --red-0: hsl(0, 100%, 98%);
+  --red-1: hsl(0, 100%, 95%);
+  --red-2: hsl(0, 100%, 89%);
+  --red-3: hsl(0, 100%, 83%);
+  --red-4: hsl(0, 100%, 76%);
+  --red-5: hsl(0, 100%, 71%);
+  --red-6: hsl(0, 94%, 65%);
+  --red-7: hsl(0, 86%, 59%);
+  --red-8: hsl(0, 74%, 54%);
+  --red-9: hsl(0, 65%, 48%);
+  --reddark-0: hsl(0, 78%, 14%);
+  --reddark-1: hsl(0, 57%, 17%);
+  --reddark-2: hsl(0, 43%, 19%);
+  --reddark-3: hsl(0, 33%, 18%);
+  --reddark-4: hsl(0, 30%, 20%);
+  --reddark-5: hsl(0, 21%, 21%);
+  --reddark-6: hsl(0, 14%, 20%);
+  --reddark-7: hsl(0, 10%, 20%);
+  --reddark-8: hsl(0, 6%, 28%);
+  --reddark-9: hsl(0, 0%, 27%);
+  --pink-0: hsl(336, 100%, 97%);
+  --pink-1: hsl(336, 100%, 94%);
+  --pink-2: hsl(338, 91%, 87%);
+  --pink-3: hsl(339, 90%, 81%);
+  --pink-4: hsl(339, 88%, 74%);
+  --pink-5: hsl(339, 82%, 67%);
+  --pink-6: hsl(339, 76%, 59%);
+  --pink-7: hsl(339, 67%, 52%);
+  --pink-8: hsl(339, 68%, 45%);
+  --pink-9: hsl(339, 69%, 38%);
+  --specialPink-0: hsl(308, 95%, 68%);
+  --grape-0: hsl(280, 67%, 96%);
+  --grape-1: hsl(287, 77%, 92%);
+  --grape-2: hsl(288, 86%, 86%);
+  --grape-3: hsl(289, 85%, 78%);
+  --grape-4: hsl(288, 83%, 71%);
+  --grape-5: hsl(288, 75%, 64%);
+  --grape-6: hsl(288, 67%, 58%);
+  --grape-7: hsl(288, 56%, 52%);
+  --grape-8: hsl(288, 54%, 46%);
+  --grape-9: hsl(288, 54%, 40%);
+  --violet-0: hsl(252, 100%, 97%);
+  --violet-1: hsl(257, 100%, 93%);
+  --violet-2: hsl(256, 100%, 87%);
+  --violet-3: hsl(255, 94%, 79%);
+  --violet-4: hsl(255, 93%, 72%);
+  --violet-5: hsl(255, 91%, 67%);
+  --violet-6: hsl(255, 86%, 63%);
+  --violet-7: hsl(255, 78%, 60%);
+  --violet-8: hsl(255, 67%, 55%);
+  --violet-9: hsl(255, 53%, 50%);
+  --indigo-0: hsl(223, 100%, 96%);
+  --indigo-1: hsl(225, 100%, 93%);
+  --indigo-2: hsl(228, 100%, 86%);
+  --indigo-3: hsl(228, 100%, 78%);
+  --indigo-4: hsl(228, 96%, 72%);
+  --indigo-5: hsl(228, 94%, 67%);
+  --indigo-6: hsl(228, 89%, 63%);
+  --indigo-7: hsl(228, 81%, 59%);
+  --indigo-8: hsl(228, 69%, 55%);
+  --indigo-9: hsl(230, 57%, 50%);
+  --blue-0: hsl(205, 100%, 95%);
+  --blue-1: hsl(206, 100%, 91%);
+  --blue-2: hsl(206, 100%, 82%);
+  --blue-3: hsl(206, 96%, 72%);
+  --blue-4: hsl(207, 91%, 64%);
+  --blue-5: hsl(207, 86%, 57%);
+  --blue-6: hsl(208, 80%, 52%);
+  --blue-7: hsl(208, 77%, 47%);
+  --blue-8: hsl(209, 77%, 43%);
+  --blue-9: hsl(209, 75%, 38%);
+  --cyan-0: hsl(185, 81%, 94%);
+  --cyan-1: hsl(185, 84%, 88%);
+  --cyan-2: hsl(186, 77%, 77%);
+  --cyan-3: hsl(187, 74%, 65%);
+  --cyan-4: hsl(187, 69%, 55%);
+  --cyan-5: hsl(188, 72%, 47%);
+  --cyan-6: hsl(187, 80%, 42%);
+  --cyan-7: hsl(188, 83%, 37%);
+  --cyan-8: hsl(189, 85%, 32%);
+  --cyan-9: hsl(189, 85%, 28%);
+  --teal-0: hsl(161, 79%, 95%);
+  --teal-1: hsl(160, 85%, 87%);
+  --teal-2: hsl(162, 78%, 77%);
+  --teal-3: hsl(162, 72%, 65%);
+  --teal-4: hsl(162, 68%, 54%);
+  --teal-5: hsl(162, 73%, 46%);
+  --teal-6: hsl(162, 82%, 40%);
+  --teal-7: hsl(162, 87%, 35%);
+  --teal-8: hsl(162, 88%, 30%);
+  --teal-9: hsl(162, 88%, 26%);
+  --green-0: hsl(131, 67%, 95%);
+  --green-1: hsl(128, 76%, 90%);
+  --green-2: hsl(128, 71%, 82%);
+  --green-3: hsl(129, 68%, 73%);
+  --green-4: hsl(130, 61%, 64%);
+  --green-5: hsl(130, 57%, 56%);
+  --green-6: hsl(131, 50%, 50%);
+  --green-7: hsl(131, 53%, 46%);
+  --green-8: hsl(131, 54%, 40%);
+  --green-9: hsl(132, 52%, 35%);
+  --lime-0: hsl(79, 81%, 94%);
+  --lime-1: hsl(80, 83%, 88%);
+  --lime-2: hsl(81, 81%, 80%);
+  --lime-3: hsl(82, 75%, 69%);
+  --lime-4: hsl(83, 73%, 59%);
+  --lime-5: hsl(84, 69%, 51%);
+  --lime-6: hsl(85, 74%, 45%);
+  --lime-7: hsl(85, 79%, 40%);
+  --lime-8: hsl(86, 84%, 36%);
+  --lime-9: hsl(85, 84%, 32%);
+  --yellow-0: hsl(50, 100%, 93%);
+  --yellow-1: hsl(49, 100%, 87%);
+  --yellow-2: hsl(49, 100%, 80%);
+  --yellow-3: hsl(48, 100%, 70%);
+  --yellow-4: hsl(47, 100%, 62%);
+  --yellow-5: hsl(45, 97%, 54%);
+  --yellow-6: hsl(42, 96%, 50%);
+  --yellow-7: hsl(39, 100%, 48%);
+  --yellow-8: hsl(35, 100%, 47%);
+  --yellow-9: hsl(31, 100%, 45%);
+  --orange-0: hsl(34, 100%, 95%);
+  --orange-1: hsl(33, 100%, 90%);
+  --orange-2: hsl(33, 100%, 83%);
+  --orange-3: hsl(32, 100%, 74%);
+  --orange-4: hsl(31, 100%, 65%);
+  --orange-5: hsl(29, 100%, 58%);
+  --orange-6: hsl(27, 98%, 54%);
+  --orange-7: hsl(24, 94%, 50%);
+  --orange-8: hsl(21, 90%, 48%);
+  --orange-9: hsl(17, 87%, 45%);
+  --primary: hsl(207, 86%, 57%);
+  --secondary: hsl(29, 100%, 58%);
+  --success-bg: hsl(130, 61%, 64%);
+  --success-primary: hsl(131, 53%, 46%);
+  --danger-bg: hsl(0, 100%, 76%);
+  --danger-primary: hsl(0, 86%, 59%);
+  --bg-dark: hsl(225, 7%, 11%);
+  --bg-light: hsl(233, 23%, 85%);
+}
+
+/* COLOURS */
+/* BASES STYLES */
+/* MIXINS */
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+html::before, html::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: transparent;
+  font-family: "Post No Bills Colombo";
+  font-weight: 800;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body.light {
+  color: hsl(225, 7%, 11%);
+  background-color: hsl(233, 23%, 85%);
+  transition: 0.5s;
+}
+
+body.dark {
+  color: hsl(233, 23%, 85%);
+  background-color: hsl(225, 7%, 11%);
+  transition: 0.5s;
+}
+
+#bioHook {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* TYPOGRAPHY */
+/* Playpen Sans */
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-Thin.ttf) format("truetype");
+  font-weight: 100;
+  font-style: thin;
+}
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-ExtraLight.ttf) format("truetype");
+  font-weight: 200;
+  font-style: extralight;
+}
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: light;
+}
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: medium;
+}
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-SemiBold.ttf) format("truetype");
+  font-weight: 600;
+  font-style: semibold;
+}
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Playpen Sans";
+  src: url(/fonts/PlaypenSans-ExtraBold.ttf) format("truetype");
+  font-weight: 800;
+  font-style: extrabold;
+}
+/* Fredericka the Great */
+@font-face {
+  font-family: "Fredericka the Great";
+  src: url(/fonts/FrederickatheGreat-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: regular;
+}
+/* Post No Bills Jaffna */
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src: url(/fonts/PostNoBillsJaffna-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: light;
+}
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src: url(/fonts/PostNoBillsJaffna-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src: url(/fonts/PostNoBillsJaffna-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: medium;
+}
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src: url(/fonts/PostNoBillsJaffna-SemiBold.ttf) format("truetype");
+  font-weight: 600;
+  font-style: semibold;
+}
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src: url(/fonts/PostNoBillsJaffna-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src: url(/fonts/PostNoBillsJaffna-ExtraBold.ttf) format("truetype");
+  font-weight: 800;
+  font-style: extrabold;
+}
+/* Post No Bills Colombo */
+@font-face {
+  font-family: "Post No Bills Colombo";
+  src: url(/fonts/PostNoBillsColombo-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: light;
+}
+@font-face {
+  font-family: "Post No Bills Colombo";
+  src: url(/fonts/PostNoBillsColombo-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Post No Bills Colombo";
+  src: url(/fonts/PostNoBillsColombo-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: medium;
+}
+@font-face {
+  font-family: "Post No Bills Colombo";
+  src: url(/fonts/PostNoBillsColombo-SemiBold.ttf) format("truetype");
+  font-weight: 600;
+  font-style: semibold;
+}
+@font-face {
+  font-family: "Post No Bills Colombo";
+  src: url(/fonts/PostNoBillsColombo-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Post No Bills Colombo";
+  src: url(/fonts/PostNoBillsColombo-ExtraBold.ttf) format("truetype");
+  font-weight: 800;
+  font-style: extrabold;
+}
+.facebook-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/facebook.svg);
+  background-size: cover;
+}
+
+.jira-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/jira.svg);
+  background-size: cover;
+}
+
+.figma-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/figma.svg);
+  background-size: cover;
+}
+
+.html5-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/html5.svg);
+  background-size: cover;
+}
+
+.sass-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/sass.svg);
+  background-size: cover;
+}
+
+.react-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/react.svg);
+  background-size: cover;
+}
+
+.node-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/node.svg);
+  background-size: cover;
+}
+
+.python-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/python.svg);
+  background-size: cover;
+}
+
+.docker-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/docker.svg);
+  background-size: cover;
+}
+
+.flask-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/flask.svg);
+  background-size: cover;
+}
+
+.django-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/django.svg);
+  background-size: cover;
+}
+
+#sun-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/sun.svg);
+  background-size: cover;
+}
+
+#moon-icon {
+  width: 40px;
+  height: 40px;
+  background: url(/icons/moon.svg);
+  background-size: cover;
+}
+
+/* Automate your stuff */
+.randomise {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 300vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: clip;
+  pointer-events: none;
+}
+
+.randomise .blocks {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+body.light .randomise .blocks {
+  background-color: hsl(233, 23%, 85%);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.311), 0 0 8px 8px rgba(0, 0, 0, 0.159) inset;
+  outline: 2px solid rgba(73, 124, 129, 0.234);
+  border-style: solid;
+  border-color: hsl(210, 14%, 83%);
+  border-width: 0.2px;
+}
+
+body.dark .randomise .blocks {
+  background-color: hsl(225, 7%, 11%);
+  border: 0.5px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5) inset;
+  outline: 0.2px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.11);
+  border-style: solid;
+  border-color: #444;
+  border-width: 0.2px;
+}
+
+body.dark .randomise .blocks:nth-child(3n+1) {
+  background: radial-gradient(ellipse at center, rgba(68, 68, 68, 0.4745098039), rgba(176, 176, 176, 0.4745098039));
+}
+
+body.dark .randomise .blocks:nth-child(3n+2) {
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4431372549), rgba(110, 108, 108, 0.4745098039));
+}
+
+body.dark .randomise .blocks:nth-child(3n+3) {
+  background: radial-gradient(ellipse at center, rgba(98, 98, 174, 0.4823529412), rgba(176, 176, 176, 0.4745098039));
+}
+
+/* BREAKPOINTS - Mobile-first approach */
+a :link {
+  color: hsl(233, 23%, 85%);
+}
+
+.light .modal-header {
+  background: rgba(64, 64, 64, 0.3);
+}
+
+/* Automate your stuff */
+/* COLOURS */
+/* LAYOUT STYLES */
+.header__hide {
+  position: fixed;
+  top: 0;
+  border-bottom: 0.125em solid rgba(249, 250, 251, 0.7);
+  box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu__row {
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  right: 0;
+}
+
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+.show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+nav {
+  background-color: rgba(208, 210, 226, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, 0.5);
+  padding-right: 40px;
+  transition: 0.5s;
+}
+
+nav a {
+  display: block;
+  margin: 20px;
+}
+
+.dropMenu .historyTab {
+  display: none;
+}
+
+.ul__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+  align-items: center;
+  cursor: pointer;
+  margin: 0.3125em;
+}
+
+@media (max-width: 480px) {
+  .ul__row {
+    padding-inline-start: 3px;
+  }
+}
+.li__text h3 {
+  text-decoration: none;
+  font-family: "Playpen Sans";
+  padding-right: 1.6rem;
+  font-weight: 300;
+  font-style: thin;
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .li__text h3 {
+    letter-spacing: 0.25rem;
+  }
+}
+.li__icon a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .li__icon a {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lj-icon {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* MIXINS */
+.basicPageLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  margin: 0 auto;
+}
+
+/* WIDGET */
+.widges {
+  border-radius: 80%;
+  border: dashed 5px #333;
+}
+
+/* COLOURS */
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+.show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+.dropMenu {
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  width: 220px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+  font-family: "Post No Bills Jaffna";
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+  list-style: none;
+}
+.dropMenu a {
+  text-decoration: none;
+  color: inherit;
+}
+.dropMenu a:hover {
+  color: hsl(29, 100%, 58%);
+}
+.dropMenu__onMe, .dropMenu__onShowcase {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .dropMenu {
+    position: fixed;
+    width: auto;
+    top: 120px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    height: calc(100vh - 520px);
+    margin: 0;
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 90;
+    font-size: 1.25rem;
+  }
+  .dropMenu li {
+    margin: 20px 0;
+  }
+}
+body.light .dropMenu {
+  background: hsl(233, 23%, 85%);
+  color: hsl(225, 7%, 11%);
+}
+
+body.dark .dropMenu {
+  background: hsl(233, 23%, 85%);
+  color: hsl(225, 7%, 11%);
+}
+
+/* HOME PAGE */
+/* COLOURS */
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+.show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+.bioPage__hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 110px 20px 40px 20px;
+}
+
+.bioPage__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 30px;
+  flex: 1;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .bioPage__container {
+    padding: 20px 20px;
+  }
+}
+@media (max-width: 480px) {
+  .bioPage__container {
+    padding: 20px 20px;
+  }
+}
+.bioPage__content {
+  margin-bottom: 40px;
+}
+
+.bioPage__content h1 {
+  margin-bottom: 20px;
+}
+
+.bioPage__content p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.bioPage__skills, .bioPage__experience {
+  margin-top: 40px;
+}
+
+.bioPage__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* COLOURS */
+body.light {
+  background: hsl(233, 23%, 85%);
+  color: hsl(220, 9%, 7%);
+}
+
+body.light .transparentBlur {
+  background-color: rgba(208, 210, 226, 0.4);
+}
+
+body.light .background {
+  background: hsl(233, 23%, 85%);
+}
+
+body.dark {
+  background: hsl(225, 7%, 11%);
+  color: hsl(233, 23%, 85%);
+}
+
+body.dark .transparentBlur {
+  background-color: rgba(26, 27, 30, 0.4);
+}
+
+body.dark .background {
+  background-color: hsl(225, 7%, 11%);
+}
+
+.sticker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 440px;
+  height: 300px;
+  clip-path: inset(0px 1px);
+  background: #F9D100;
+  border-radius: 60px;
+  transform: rotate(-20deg);
+}
+
+.inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 440px;
+  height: 280px;
+  background: #1E1E1E;
+  border: 10px solid #1E1E1E;
+  border-radius: 50px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 2px;
+  gap: 10px;
+  width: 420px;
+  height: 146px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.caution {
+  width: 351px;
+  height: 119px;
+  font-family: "Post No Bills Colombo";
+  font-style: "extrabold";
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 144px;
+  text-align: center;
+  color: #F9D100;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.bars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 725px;
+  height: 17px;
+  background: #F9D100;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  clip-path: inset(0px 0px);
+}
+
+.blackStripe {
+  width: 34.81px;
+  height: 135.54px;
+  background: #1E1E1E;
+  transform: matrix(0.94, -0.34, -0.18, 0.98, 0, 0);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.lower {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 419px;
+  height: 135px;
+  border-radius: 0px 0px 45px 45px;
+  background: #F9D100;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.labelDetail {
+  width: 339px;
+  height: 100px;
+  font-family: "Post No Bills Colombo";
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+/*!*********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/sections/_sectionProfile.scss ***!
+  \*********************************************************************************************************************************/
+@charset "UTF-8";
+/* COLOURS */
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+}
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+.profileSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: transparent;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100vh;
+  max-width: 2048px;
+  margin-top: 110px;
+}
+@media (orientation: landscape) and (max-height: 900px) {
+  .profileSection {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+}
+
+.profilePos {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.avatar {
+  position: relative;
+  width: 330px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+  clip-path: ellipse(200px 320px at 150px 130px);
+  transition: filter 0.5s ease;
+}
+
+.coder {
+  position: absolute;
+  align-items: center;
+  top: 40px;
+  left: 320px;
+  font-family: "Post No Bills Colombo";
+  font-weight: 800;
+  font-size: 31px;
+  white-space: nowrap;
+  transition: all 0.5s ease;
+}
+@media (max-width: 400px) {
+  .coder {
+    transform: translateX(-60px);
+  }
+}
+
+.designer {
+  position: absolute;
+  align-items: center;
+  padding-left: 15px;
+  left: 0px;
+  top: 270px;
+  font-family: "Post No Bills Colombo";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 54px;
+  transition: all 0.5s ease;
+}
+@media (max-width: 400px) {
+  .designer {
+    left: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .designer {
+    padding-left: 10px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .designer {
+    padding-left: 15px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .designer {
+    padding-left: 15px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .designer {
+    padding-left: 15px;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .designer {
+    padding-left: 15px;
+  }
+}
+
+.LjLink {
+  position: relative;
+  padding: 5px;
+  display: block;
+  align-items: center;
+}
+
+.LucasJoyce {
+  font-family: "Fredericka the Great", cursive;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .LucasJoyce {
+    font-size: 55px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .LucasJoyce {
+    font-size: 80px;
+    line-height: 100px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .LucasJoyce {
+    font-size: 120px;
+    line-height: 10px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .LucasJoyce {
+    font-size: 160px;
+    line-height: 110px;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .LucasJoyce {
+    position: absolute;
+    top: -700px;
+    right: 150px;
+    font-size: 200px;
+    line-height: 250px;
+  }
+}
+
+.linkTag {
+  position: relative;
+  display: flex;
+  top: -38px;
+  font-family: "Post No Bills Colombo";
+  font-style: normal;
+  font-weight: 500;
+  justify-content: flex-end;
+  text-decoration-line: underline;
+  padding-right: 30px;
+  cursor: pointer;
+}
+@media (max-width: 480px) {
+  .linkTag {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .linkTag {
+    font-size: 22px;
+    line-height: 38px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .linkTag {
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 500;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .linkTag {
+    font-size: 42px;
+    line-height: 62px;
+    font-weight: 500;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .linkTag {
+    top: -580px;
+    padding-right: 80px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 70px;
+    font-style: italic;
+  }
+}
+
+body.light .avatar {
+  filter: grayscale(100%);
+}
+body.light .LucasJoyce {
+  color: hsl(220, 9%, 7%);
+}
+body.light .close:hover {
+  color: blue;
+}
+body.light .dev {
+  color: hsl(210, 17%, 98%);
+  -webkit-text-stroke: 2px hsl(220, 9%, 7%);
+}
+body.light .web {
+  color: hsl(210, 14%, 89%);
+}
+body.light .close .designer .coder .linkTag .text .enquiry .interaction .design {
+  color: hsl(220, 9%, 7%);
+}
+
+body.dark .avatar {
+  filter: invert(100%) grayscale(100%);
+  transition: filter 0.5s ease;
+}
+body.dark .LucasJoyce {
+  color: hsl(233, 23%, 85%);
+}
+body.dark .close .designer .coder .linkTag .text .enquiry .interaction .design {
+  color: hsl(233, 23%, 85%);
+}
+body.dark .close:hover {
+  color: rgb(175, 47, 255);
+}
+body.dark .dev {
+  color: hsl(83, 73%, 59%);
+  -webkit-text-stroke: 2px hsl(233, 23%, 85%);
+}
+body.dark .web {
+  color: hsl(210, 7%, 56%);
+}
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/modules/_magicButton.scss ***!
+  \*****************************************************************************************************************************/
+/* COLOURS */
+svg.filter {
+  display: none;
+}
+
+button {
+  padding: 1rem;
+  font-size: 2rem;
+  border: none;
+  position: relative;
+  color: hsl(220, 7%, 8%);
+  border-radius: 15px;
+  background-color: hsl(233, 23%, 85%);
+  filter: url("#blob");
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  background-color: hsl(222, 5%, 38%);
+  color: hsl(233, 23%, 85%);
+  transition: 0.2s;
+}
+
+.bubbles {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.bubbles .bubble {
+  background-color: hsl(222, 5%, 38%);
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  display: block;
+  z-index: -1;
+}
+.bubbles .bubble:hover {
+  background-color: hsl(233, 23%, 85%);
+}
+.bubbles .bubble:nth-child(1) {
+  left: 115px;
+  width: 35px;
+  height: 35px;
+  animation: move-1 3.02s infinite;
+  animation-delay: 0.2s;
+}
+.bubbles .bubble:nth-child(2) {
+  left: 80px;
+  width: 35px;
+  height: 35px;
+  animation: move-2 3.04s infinite;
+  animation-delay: 0.4s;
+}
+.bubbles .bubble:nth-child(3) {
+  left: 84px;
+  width: 35px;
+  height: 35px;
+  animation: move-3 3.06s infinite;
+  animation-delay: 0.6s;
+}
+.bubbles .bubble:nth-child(4) {
+  left: 54px;
+  width: 35px;
+  height: 35px;
+  animation: move-4 3.08s infinite;
+  animation-delay: 0.8s;
+}
+.bubbles .bubble:nth-child(5) {
+  left: 94px;
+  width: 35px;
+  height: 35px;
+  animation: move-5 3.1s infinite;
+  animation-delay: 1s;
+}
+.bubbles .bubble:nth-child(6) {
+  left: 154px;
+  width: 35px;
+  height: 35px;
+  animation: move-6 3.12s infinite;
+  animation-delay: 1.2s;
+}
+.bubbles .bubble:nth-child(7) {
+  left: 140px;
+  width: 35px;
+  height: 35px;
+  animation: move-7 3.14s infinite;
+  animation-delay: 1.4s;
+}
+.bubbles .bubble:nth-child(8) {
+  left: 143px;
+  width: 35px;
+  height: 35px;
+  animation: move-8 3.16s infinite;
+  animation-delay: 1.6s;
+}
+.bubbles .bubble:nth-child(9) {
+  left: 88px;
+  width: 35px;
+  height: 35px;
+  animation: move-9 3.18s infinite;
+  animation-delay: 1.8s;
+}
+.bubbles .bubble:nth-child(10) {
+  left: 16px;
+  width: 35px;
+  height: 35px;
+  animation: move-10 3.2s infinite;
+  animation-delay: 2s;
+}
+
+@keyframes move-1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -235px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -164px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -164px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-4 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -149px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-5 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -175px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-6 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -156px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-7 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -226px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-8 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -201px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-9 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -64px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-10 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -64px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+.buttpos {
+  position: absolute;
+  top: 75%;
+  align-items: center;
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/components/_deafDev.scss ***!
+  \****************************************************************************************************************************/
+.deafDev {
+  color: #fff;
+  position: absolute;
+  display: flex;
+  align-items: start;
+  top: 250px;
+  left: 80px;
+}
+.deafDev h2 {
+  font-size: 8em;
+  font-family: "Post No Bills Colombo";
+  font-weight: 800;
+}
+.deafDev h2 span {
+  transition: 0.5s;
+  filter: blur(200px);
+  opacity: 0;
+  transform: scale(8);
+}
+.deafDev h2:hover span {
+  filter: blur(0px);
+  opacity: 1;
+  transform: scale();
+}
+.deafDev h2 span:nth-child(10n+1) {
+  transition-delay: 0.1s;
+}
+.deafDev h2 span:nth-child(10n+2) {
+  transition-delay: 0.2s;
+}
+.deafDev h2 span:nth-child(10n+3) {
+  transition-delay: 0.3s;
+}
+.deafDev h2 span:nth-child(10n+4) {
+  transition-delay: 0.4s;
+}
+.deafDev h2 span:nth-child(10n+5) {
+  transition-delay: 0.5s;
+}
+.deafDev h2 span:nth-child(10n+6) {
+  transition-delay: 0.6s;
+}
+.deafDev h2 span:nth-child(10n+7) {
+  transition-delay: 0.7s;
+}
+.deafDev h2 span:nth-child(10n+8) {
+  transition-delay: 0.8s;
+}
+.deafDev h2 span:nth-child(10n+9) {
+  transition-delay: 0.9s;
+}
+.deafDev h2 span:nth-child(10n+10) {
+  transition-delay: 1s;
+}
+.deafDev h2 span:nth-child(10n+11) {
+  transition-delay: 1.1s;
+}
+.deafDev h2 span:nth-child(10n+12) {
+  transition-delay: 1.2s;
+}
+.deafDev h2 span:nth-child(10n+13) {
+  transition-delay: 1.3s;
+}
+.deafDev h2 span:nth-child(10n+14) {
+  transition-delay: 1.4s;
+}
+.deafDev h2 span:nth-child(10n+15) {
+  transition-delay: 1.5s;
+}
+
+.deafhand {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: bottom;
+}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/sections/_sectionProfileMain.scss ***!
+  \*************************************************************************************************************************************/
+@charset "UTF-8";
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+}
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+.mainSection {
+  position: relative;
+  display: flex;
+  width: 100%;
+  background: transparent;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 100vh;
+  max-width: 2048px;
+}
+
+.enquiry {
+  font-family: "Post No Bills Colombo";
+  align-items: center;
+  font-style: normal;
+  line-height: 144px;
+}
+@media (max-width: 480px) {
+  .enquiry {
+    font-size: 25px;
+    font-weight: 400;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .enquiry {
+    font-size: 22px;
+    font-weight: 400;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .enquiry {
+    position: absolute;
+    top: 230px;
+    right: 100px;
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 144px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .enquiry {
+    position: absolute;
+    top: 230px;
+    right: 100px;
+    font-size: 70px;
+    font-weight: 800;
+    line-height: 144px;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .enquiry {
+    position: absolute;
+    top: 230px;
+    right: 100px;
+    font-size: 110px;
+    font-weight: 800;
+    line-height: 144px;
+  }
+}
+
+.web {
+  position: absolute;
+  top: 40px;
+  font-family: "Post No Bills Colombo";
+}
+@media (max-width: 480px) {
+  .web {
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    filter: blur(1px);
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .web {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    filter: blur(1px);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .web {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    filter: blur(1px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .web {
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    filter: blur(1px);
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .web {
+    font-size: 90px;
+    font-weight: 800;
+    letter-spacing: 0.6em;
+    filter: blur(4px);
+  }
+}
+
+.dev {
+  font-family: "Post No Bills Colombo";
+}
+@media (max-width: 480px) {
+  .dev {
+    position: relative;
+    font-size: 50px;
+    font-weight: 600;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .dev {
+    position: absolute;
+    font-size: 22px;
+    font-weight: 400;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dev {
+    position: absolute;
+    left: 40px;
+    top: 180px;
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 96px;
+    align-items: center;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .dev {
+    position: absolute;
+    left: 40px;
+    top: 180px;
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 96px;
+    align-items: center;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .dev {
+    position: absolute;
+    left: 80px;
+    top: 100px;
+    font-size: 100px;
+    font-weight: 900;
+    letter-spacing: 0.5em;
+    line-height: 96px;
+    align-items: center;
+  }
+}
+
+.interaction {
+  position: absolute;
+  top: 530px;
+  font-family: "Post No Bills Colombo";
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.design {
+  position: absolute;
+  top: 580px;
+  font-family: "Post No Bills Colombo";
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.quote {
+  font-family: "Post No Bills Jaffna";
+  font-size: 30px;
+  font-weight: 300;
+  padding: 15px;
+  justify-content: center;
+}
+@media (max-width: 480px) {
+  .quote {
+    font-size: 23px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .quote {
+    font-size: 22px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .quote {
+    font-size: 32px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .quote {
+    font-size: 42px;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .quote {
+    font-size: 60px;
+    font-weight: 300;
+  }
+}
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/modules/_modal.scss ***!
+  \***********************************************************************************************************************/
+/* COLOURS */
+a :link {
+  color: hsl(233, 23%, 85%);
+}
+
+.light .modal-header {
+  background: rgba(64, 64, 64, 0.3);
+}
+
+.modalPop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 20px 20px 20px;
+  z-index: 120;
+}
+
+.modal-body {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 50px;
+  background-clip: padding-box;
+  background: linear-gradient(117.01deg, rgba(10, 5, 4, 0.32) 2.93%, rgba(128, 126, 126, 0.32) 13.97%, rgba(122, 122, 130, 0.208) 32.55%, rgba(122, 122, 130, 0.208) 63.8%, rgba(255, 255, 255, 0.32) 83.01%), linear-gradient(121.78deg, rgba(255, 255, 255, 0.7) 2.86%, rgba(117, 117, 117, 0.2470588235) 74.21%);
+  box-shadow: 10px 10px 90px rgba(0, 0, 0, 0.25), 0px 10px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.modal-body::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  border-radius: 50px;
+  z-index: -1;
+  inset: 0;
+  padding: 5px;
+  background: linear-gradient(121.78deg, rgba(255, 255, 255, 0.7) 2.86%, #2D2D2D 74.21%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 110;
+  transition: 0.4s;
+}
+.close:hover {
+  color: #F9D100 !important;
+  transform: scale(1.8);
+  transition: 0.4s;
+}
+.close:focus {
+  outline: none;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.modal-header {
+  position: relative;
+  width: -webkit-fill-available;
+  height: 40px;
+  display: inline-block;
+  align-items: center;
+  flex: auto;
+  padding: 16px 25px 2px 25px;
+  border: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  /* background: #4040404D; */
+  border-radius: 45px 45px 0px 0px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  background: rgba(64, 64, 64, 0.25);
+  padding: 2px 16px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.modal-footer {
+  height: 40px;
+  background: rgba(64, 64, 64, 0.3);
+  border-radius: 0px 0px 45px 45px;
+  padding: 16px 25px 2px 25px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+  .modalPop {
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-body {
+    width: 95%;
+    max-width: 340px;
+    border-radius: 20px;
+    max-height: 85vh;
+    overflow-y: auto;
+    margin: auto;
+  }
+  .modal-body::after {
+    border-radius: 20px;
+  }
+  .modal-header {
+    padding: 12px 15px 2px 15px;
+    height: auto;
+    min-height: 35px;
+    border-radius: 20px 20px 0px 0px;
+  }
+  .modal-header h2 {
+    font-size: 18px;
+  }
+  .close {
+    font-size: 24px;
+    padding: 5px 10px;
+  }
+  .modal-content {
+    padding: 15px 10px;
+  }
+  .modal-content label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .modal-footer {
+    padding: 12px 15px 2px 15px;
+    height: auto;
+    min-height: 35px;
+    border-radius: 0px 0px 20px 20px;
+  }
+  .modal-footer h3 {
+    font-size: 14px;
+  }
+  .enterInput,
+  .enterTextArea {
+    font-size: 16px;
+    padding: 10px;
+  }
+  .enterTextArea {
+    min-height: 100px;
+  }
+  .enterSubmit {
+    width: 100%;
+    max-width: none;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/components/_input.scss ***!
+  \**************************************************************************************************************************/
+/* COLOURS */
+.input {
+  margin: 1rem 0;
+}
+
+.input label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input input {
+  font: inherit;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: white;
+  padding: 0.15rem 0.25rem;
+}
+
+.input input:focus {
+  outline: none;
+  background: #e7e7e7;
+  border-color: black;
+}
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/modules/_formEmail.scss ***!
+  \***************************************************************************************************************************/
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+}
+
+.enterInput {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.enterTextArea {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.enterSubmit {
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  max-width: 100px;
+}
+
+.enterSubmit:hover {
+  background: #F9D100;
+}
+
+.input {
+  margin: 0.3rem;
+}
+.input label {
+  font-weight: 400;
+  display: block;
+  margin-bottom: 0.2rem;
+  background: pink;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/layouts/_footer.scss ***!
+  \************************************************************************************************************************/
+/* COLOURS */
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.footerBanner {
+  background: orange;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.socialMedia {
+  background: transparent;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 110px;
+  transition: 0.25s;
+}
+
+.media {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.media li {
+  list-style: none;
+  display: list-item;
+  position: relative;
+}
+.media li::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10vw;
+  pointer-events: none;
+  transition: 0.5s;
+  color: transparent;
+}
+.media li:hover::before {
+  transform: translate(-50%, calc(-50% - 150px));
+  opacity: 0.5;
+  color: transparent;
+}
+.media li a .themed-icon {
+  display: flex;
+  margin: 0 auto;
+}
+.media li .abe {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 40%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hsl(220, 9%, 7%);
+  text-decoration: none;
+  font-size: 3.3em;
+  padding-right: 0;
+  letter-spacing: 0;
+}
+.media li .abe::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  z-index: 10;
+}
+.media li .abe::after {
+  content: "";
+  position: absolute;
+  top: 1;
+  right: -1px;
+  width: 10px;
+  height: 100%;
+  filter: blur(100px);
+  z-index: 2;
+}
+.media li .abe:hover.linkedin {
+  background: linear-gradient(hsl(233, 23%, 85%), #0099ff);
+}
+.media li .abe:hover.github {
+  background: linear-gradient(hsl(233, 23%, 85%), #00ff44);
+}
+.media li .abe:hover.behance {
+  background: linear-gradient(hsl(233, 23%, 85%), #e4405f);
+}
+.media li .abe:hover.dribble {
+  background: linear-gradient(hsl(233, 23%, 85%), #0099ff);
+}
+.media li .abe:hover svg {
+  transform: scale(0.9) translateZ(890px);
+}
+.media li .abe:hover svg path, .media li .abe:hover svg circle, .media li .abe:hover svg rect, .media li .abe:hover svg polygon {
+  fill: white !important;
+}
+.media li .abe svg {
+  transition: 0.25s;
+}
+
+body.dark .media li .abe:hover.linkedin {
+  background: linear-gradient(hsl(225, 7%, 11%), #0099ff);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+body.dark .media li .abe:hover.github {
+  background: linear-gradient(hsl(225, 7%, 11%), #00ff44);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+body.dark .media li .abe:hover.behance {
+  background: linear-gradient(hsl(225, 7%, 11%), #e4405f);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+body.dark .media li .abe:hover.dribble {
+  background: linear-gradient(hsl(225, 7%, 11%), #0099ff);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+body.dark .media li:hover::before {
+  color: hsl(233, 23%, 85%);
+  opacity: 0.5;
+}
+
+body.light .media li:hover::before {
+  color: hsl(225, 7%, 11%);
+  opacity: 0.5;
+}
+body.light .media li .abe:hover.linkedin {
+  background: linear-gradient(hsl(233, 23%, 85%), #0099ff);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+body.light .media li .abe:hover.github {
+  background: linear-gradient(hsl(233, 23%, 85%), #00ff44);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+body.light .media li .abe:hover.behance {
+  background: linear-gradient(hsl(233, 23%, 85%), #e4405f);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+body.light .media li .abe:hover.dribble {
+  background: linear-gradient(hsl(233, 23%, 85%), #0099ff);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+body.light .media li:hover::before {
+  color: hsl(220, 3%, 58%);
+  opacity: 0.5;
+}
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/pages/_bioPage.scss ***!
+  \***********************************************************************************************************************/
+@charset "UTF-8";
+/* COLOURS */
+/*
+  If you have media queries that affect overall layout
+  (grid systems, containers), they could go in layouts/
+*/
+/*
+/sass/
+├── bases/
+│   ├── _reset.scss           ← CSS resets
+│   ├── _colours.scss         ← Color variables
+│   ├── _typography.scss      ← Font settings
+│   ├── _media.scss           ← Breakpoint variables & mixins ONLY
+│   └── _bases-dir.scss
+│
+├── layouts/
+│   ├── _container.scss       ← Container responsive styles
+│   ├── _grid.scss           ← Grid system responsive styles
+│   └── _layouts-dir.scss
+│
+├── components/
+│   ├── _header.scss         ← Header + its media queries
+│   ├── _nav.scss            ← Nav + its media queries
+│   ├── _card.scss           ← Card + its media queries
+│   └── _components-dir.scss
+│
+└── themes/
+    ├── _theme.scss           ← Theme styles (can include responsive)
+    └── _themes-dir.scss
+*/
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+}
+@media (max-width: 480px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover-effect {
+    display: none;
+  }
+}
+.bioPage__hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 110px 20px 40px 20px;
+}
+.bioPage__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 30px;
+  flex: 1;
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .bioPage__container {
+    padding: 20px 20px;
+  }
+}
+@media (max-width: 480px) {
+  .bioPage__container {
+    padding: 20px 20px;
+  }
+}
+.bioPage__content {
+  margin-bottom: 40px;
+}
+.bioPage__content h1 {
+  margin-bottom: 20px;
+}
+.bioPage__content p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.bioPage__skills, .bioPage__experience {
+  margin-top: 40px;
+}
+.bioPage__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+/*!****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/components/_constructionSticker.scss ***!
+  \****************************************************************************************************************************************/
+.sticker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 440px;
+  height: 300px;
+  clip-path: inset(0px 1px);
+  background: #F9D100;
+  border-radius: 60px;
+  transform: rotate(-20deg);
+}
+
+.inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 440px;
+  height: 280px;
+  background: #1E1E1E;
+  border: 10px solid #1E1E1E;
+  border-radius: 50px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 2px;
+  gap: 10px;
+  width: 420px;
+  height: 146px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.caution {
+  width: 351px;
+  height: 119px;
+  font-family: "Post No Bills Colombo";
+  font-style: "extrabold";
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 144px;
+  text-align: center;
+  color: #F9D100;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.bars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 725px;
+  height: 17px;
+  background: #F9D100;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  clip-path: inset(0px 0px);
+}
+
+.blackStripe {
+  width: 34.81px;
+  height: 135.54px;
+  background: #1E1E1E;
+  transform: matrix(0.94, -0.34, -0.18, 0.98, 0, 0);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.lower {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 419px;
+  height: 135px;
+  border-radius: 0px 0px 45px 45px;
+  background: #F9D100;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.labelDetail {
+  width: 339px;
+  height: 100px;
+  font-family: "Post No Bills Colombo";
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
