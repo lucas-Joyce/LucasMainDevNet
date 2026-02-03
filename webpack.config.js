@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/js/index.js',
+    entry: './frontend/src/js/index.js',
     output: {
       filename: 'bundle.js',
       publicPath: '/', 
@@ -71,7 +71,7 @@ module.exports = {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './public/index.html',
+        template: './frontend/public/index.html',
         minify: false, 
         minimizerOptions: {
         ignoreCustomFragments: [/link rel="icon"/],
@@ -82,9 +82,9 @@ module.exports = {
       }),
       new CopyWebpackPlugin({
         patterns: [
-          { from: 'public/favicon.ico', to: 'favicon.ico' },
-          { from: 'public/manifest.json', to: 'manifest.json' },
-          { from: './src/img', to: 'img' },
+          { from: 'frontend/public/favicon.ico', to: 'favicon.ico' },
+          { from: 'frontend/public/manifest.json', to: 'manifest.json' },
+          { from: './frontend/src/img', to: 'img' },
         ],
       }),
       
@@ -94,7 +94,7 @@ module.exports = {
         directory: path.join(__dirname, 'dist'),
       }, 
       historyApiFallback: true, 
-      port: 3000,
+      port: 3001,
         open: {
           app: {
             name: 'google chrome',

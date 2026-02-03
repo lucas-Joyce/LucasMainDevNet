@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx webpack serve",
     "build": "npx webpack --mode development",
-    "sass": "sass src/sass/app.scss dist/app.css --style expanded"
+    "sass": "sass frontend/src/sass/app.scss dist/app.css --style expanded"
   },
   "keywords": [],
   "author": "",
