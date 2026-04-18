@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/BugTracker",
+      "destination": "https://guileless-fox-6d54b9.netlify.app",
+      "permanent": false
+    }
+  ]
+}

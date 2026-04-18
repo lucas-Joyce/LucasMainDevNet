@@ -95,11 +95,15 @@ module.exports = {
       }, 
       historyApiFallback: true, 
       port: 3001,
-        open: {
+        open: process.platform == 'darwin' ? {
           app: {
             name: 'google chrome',
           },
+      } : {
+        app: {
+          name: 'brave-browser',
+        },
       },
-    }
+    },
   };
   
