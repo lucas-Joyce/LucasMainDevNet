@@ -1,16 +1,8 @@
-import React from'react';
-import ReactDOM  from 'react-dom';
-import ConstSticker from '../components/constructionSticker.js';
+import { useEffect } from 'react';
 
-const BugPage = (props) => {
-   
-    return (
-        ReactDOM.createPortal(
-            <div className='basicPageLayout'>
-                <h1>Bug Page Here</h1>
-                <ConstSticker />  
-            </div>, document.getElementById('bugHook')
-        )
-    );
-};
-export default BugPage;
+export default function BugPage() {
+  useEffect(() => {
+    window.location.href = 'https://guileless-fox-6d54b9.netlify.app';
+  }, []);
+  return null;
+}
